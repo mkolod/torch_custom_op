@@ -1,0 +1,5 @@
+setup.py
+max_pool.egg-info/PKG-INFO
+max_pool.egg-info/SOURCES.txt
+max_pool.egg-info/dependency_links.txt
+max_pool.egg-info/top_level.txt
