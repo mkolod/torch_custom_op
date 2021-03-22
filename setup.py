@@ -2,11 +2,11 @@ from setuptools import setup
 from torch.utils.cpp_extension import BuildExtension, CUDAExtension
 
 setup(
-    name='max_pool_cuda',
+    name='saxpy_cuda',
     ext_modules=[
-        CUDAExtension('max_pool_cuda', [
-            'maxpool_2d.cpp',
-            'maxpool_2d_kernel.cu',
+        CUDAExtension('saxpy_cuda', [
+            'saxpy.cpp',
+            'saxpy_kernel.cu',
         ])
     ],
     cmdclass={

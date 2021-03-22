@@ -1,12 +1,12 @@
 import torch
-import max_pool_cuda
+import saxpy_cuda
 
-x = torch.randn(1, 224, 224).cuda()
-kernel_size = 3
-stride = 1
-padding = (kernel_size - 1) // 2
+NUMEL = 1024
+x = torch.randn(NUMEL, device='cuda:0');
+y = torch.randn(NUMEL, device='cuda:0');
+a = 2.0
 
-y = torch.nn.functional.max_pool2d(x, kernel_size=kernel_size, stride=stride, padding=padding)
-z = max_pool_cuda.forward(x, kernel_size, stride, padding)
+out_torch = a * x + y
+out_custom = saxpy_cuda.forward(x, y, a)
 
-print(y-z)
+print("all outputs close? {}".format(torch.allclose(out_torch, out_custom)))
