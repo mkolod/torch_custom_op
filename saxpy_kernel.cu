@@ -25,12 +25,12 @@ __global__ void saxpy_kernel(
   output[gIdx] = a * x[gIdx] + y[gIdx];
 }
 
-void saxpy_launcher(torch::Tensor& x,torch::Tensor& y, torch::Tensor output, const int numel, const float a) {
+void saxpy_launcher(torch::Tensor* x,torch::Tensor* y, torch::Tensor* output, const int numel, const float a) {
 
   const int block = 1024;
   const int grid = (numel + block - 1) / block; 
 
-  saxpy_kernel<<<grid, block>>>(x.data_ptr<float>(), y.data_ptr<float>(), output.data_ptr<float>(), numel, a);
+  saxpy_kernel<<<grid, block>>>(x->data_ptr<float>(), y->data_ptr<float>(), output->data_ptr<float>(), numel, a);
 
    cudaStreamSynchronize(0); 
    cudaCheckError();
