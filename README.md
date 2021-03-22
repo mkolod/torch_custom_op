@@ -1,4 +1,4 @@
-# torch_custom_op
+# torch_custom_op - trivial saxpy example
 
 ## To test
 
