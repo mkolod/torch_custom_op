@@ -9,8 +9,8 @@ docker run --rm -it --gpus all --ipc host nvcr.io/nvidia/pytorch:20.08-py3
 ```
 3. When in the container:
 ```
-
-cd /host
+git clone https://github.com/mkolod/torch_custom_op.git
+cd torch_custom_op
 python setup.py install
 cd test
 python test.py
